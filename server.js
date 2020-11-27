@@ -1,16 +1,16 @@
 const http = require("http");
 const express = require("express");
-const path = require("path");
 const app = express();
 app.use(express.json());
 app.use(express.static("express"));
 
 const translate = require("@vitalets/google-translate-api");
-app.get("/", function(req,res){
-    console.log('on server');
-    res.sendStatus(200);
+app.get("/", function (req, res) {
+  console.log("on server");
+  res.sendStatus(200);
 });
 app.get("/api/hte", function (req, res) {
+  console.log("hit hte");
   if (req.query.text) {
     translate(req.query.text, { from: "hi", to: "en" })
       .then((data) => {
@@ -24,6 +24,7 @@ app.get("/api/hte", function (req, res) {
   }
 });
 app.get("/api/eth", function (req, res) {
+  console.log("hit eth");
   if (req.query.text) {
     translate(req.query.text, { from: "en", to: "hi" })
       .then((data) => {
@@ -37,7 +38,7 @@ app.get("/api/eth", function (req, res) {
   }
 });
 
-console.log('working');
+console.log("working");
 
 const server = http.createServer(app);
 const port = process.env.PORT || 8000;
