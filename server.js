@@ -41,6 +41,6 @@ app.get("/api/eth", function (req, res) {
 // });
 
 const server = http.createServer(app);
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 server.listen(port);
 console.debug("Server listening on port " + port);
