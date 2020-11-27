@@ -12,6 +12,7 @@ app.get("/", function (req, res) {
 app.get("/api/hte", function (req, res) {
   console.log("hit hte");
   if (req.query.text) {
+      console.log(req.query.text);
     translate(req.query.text, { from: "hi", to: "en" })
       .then((data) => {
         return res.json({
