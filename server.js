@@ -6,7 +6,10 @@ app.use(express.json());
 app.use(express.static("express"));
 
 const translate = require("@vitalets/google-translate-api");
-
+app.get("/", function(req,res){
+    console.log('on server');
+    res.sendStatus(200);
+});
 app.get("/api/hte", function (req, res) {
   if (req.query.text) {
     translate(req.query.text, { from: "hi", to: "en" })
@@ -34,11 +37,7 @@ app.get("/api/eth", function (req, res) {
   }
 });
 
-// var text = "yes";
-// // console.log("English :>", text);
-// googleTranslate.translate(text, "hi", function (err, translation) {
-//   console.log("Hindi :>", translation);
-// });
+console.log('working');
 
 const server = http.createServer(app);
 const port = process.env.PORT || 8000;
